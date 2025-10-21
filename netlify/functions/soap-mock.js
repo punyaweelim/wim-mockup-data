@@ -3,7 +3,7 @@ const express = require('express');
 const serverless = require('serverless-http');
 
 // ไฟล์ server.js เดิมที่มี logic ของ Express App ทั้งหมด
-const app = require('./server'); 
+const app = require('../../server'); 
 
 // แปลง Express App ให้เป็น Handler ที่ Serverless เข้าใจ
 // โดยใช้ไฟล์ server.js เป็นตัวหลัก
