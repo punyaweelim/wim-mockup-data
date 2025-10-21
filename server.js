@@ -251,7 +251,7 @@ const createSoapResponse = (vehicleRecords) => {
 // Middleware เพื่ออ่าน Body เป็นข้อความ (SOAP XML)
 app.use(express.text({ type: '*/*' }));
 
-app.post('/VehicleDetectionService', (req, res) => {
+app.post(/.*\/VehicleDetectionService/, (req, res) => {
     // 1. สุ่มจำนวน Record
     const numRecords = randomInt(2, 10); 
 
