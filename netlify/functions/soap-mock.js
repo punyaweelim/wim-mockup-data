@@ -1,13 +1,7 @@
-// นำเข้า Express App เดิม
+// ใน netlify/functions/soap-mock.js:
 const express = require('express');
 const serverless = require('serverless-http');
+const app = require('../../server'); // 💡 สำคัญ: Path ต้องถูกต้อง (ออกจาก netlify/functions ไปหา server.js)
 
-// ไฟล์ server.js เดิมที่มี logic ของ Express App ทั้งหมด
-const app = require('../../server'); 
-
-// แปลง Express App ให้เป็น Handler ที่ Serverless เข้าใจ
-// โดยใช้ไฟล์ server.js เป็นตัวหลัก
+// ตรวจสอบว่ามีการเรียกใช้ serverless() ถูกต้อง
 module.exports.handler = serverless(app);
-
-// **หมายเหตุ:** คุณอาจต้องย้ายโค้ด Express ทั้งหมดจาก server.js 
-// มาไว้ในไฟล์นี้ หรือ export 'app' object จาก server.js แทนการรัน listen()

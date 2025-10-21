@@ -8,3 +8,9 @@
 [functions]
   # กำหนด Node.js runtime version
   node_bundler = "esbuild"
+
+[redirects]
+  # ชี้การเรียกใช้ทั้งหมดจาก /api/* ไปยัง Function ที่ชื่อ soap-mock
+  from = "/api/*"
+  to = "/.netlify/functions/soap-mock/:splat"
+  status = 200
