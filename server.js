@@ -281,6 +281,9 @@ app.post('/VehicleDetectionService', (req, res) => {
 });
 
 // --- Server Start ---
-app.listen(PORT, () => {
-    console.log(`SOAP Mock Server is running on http://localhost:${PORT}/VehicleDetectionService`);
-});
+// app.listen(PORT, () => {
+//     console.log(`SOAP Mock Server is running on http://localhost:${PORT}/VehicleDetectionService`);
+// });
+
+// --- Server Export (เพิ่มส่วนนี้) ---
+module.exports = app;

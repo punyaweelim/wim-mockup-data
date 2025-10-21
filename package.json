@@ -10,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@netlify/functions": "^5.0.0",
     "express": "^5.1.0",
     "luxon": "^3.7.2",
+    "serverless-http": "^4.0.0",
     "xml-js": "^1.6.11"
   }
 }

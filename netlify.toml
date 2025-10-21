@@ -1,0 +1,10 @@
+[build]
+  # คำสั่งที่ใช้ในการติดตั้ง dependencies
+  command = "npm install" 
+  
+  # โฟลเดอร์ที่เก็บ Serverless Functions
+  functions = "netlify/functions" 
+
+[functions]
+  # กำหนด Node.js runtime version
+  node_bundler = "esbuild"
