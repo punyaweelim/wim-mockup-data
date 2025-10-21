@@ -120,10 +120,11 @@ const generateSingleVehicleRecord = (index) => {
     const plateNumber = generateLicensePlate();
     const boolCeAnpr = randomFloat() < 0.8 ? "True" : "False";
 
-    return {
+   return {
         type: 'element',
         name: 'Vehicle',
         attributes: {
+            // ... (Vehicle Attributes ทั้งหมด)
             ID_: String(303000 + index),
             LN: String(randomInt(1, 3)),
             SN: String(randomInt(70, 80)),
@@ -149,6 +150,7 @@ const generateSingleVehicleRecord = (index) => {
             PIC_ROOT_ALIAS_: "PhotosRoot"
         },
         elements: [
+            // 1. Element Category
             {
                 type: 'element',
                 name: 'Category',
@@ -160,6 +162,7 @@ const generateSingleVehicleRecord = (index) => {
                     AN: String(an)
                 }
             },
+            // 2. Element Measure
             {
                 type: 'element',
                 name: 'Measure',
@@ -186,8 +189,18 @@ const generateSingleVehicleRecord = (index) => {
                     UNCENTERED_: randomFloat() < 0.15 ? "True" : "False"
                 }
             },
-            ...axleData,
-            ...axleGroups
+            // 3. Elements Axle (Array ที่ต้องถูกแตกออก)
+            ...axleData.map(a => ({
+                type: 'element',
+                name: 'Axle',
+                attributes: a._attributes 
+            })),
+            // 4. Elements AxleGroup (Array ที่ต้องถูกแตกออก)
+            ...axleGroups.map(ag => ({
+                type: 'element',
+                name: 'AxleGroup',
+                attributes: ag._attributes
+            }))
         ]
     };
 };
