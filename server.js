@@ -133,7 +133,7 @@ const generateSingleVehicleRecord = (index) => {
             // ... (Vehicle Attributes ทั้งหมด)
             ID_: String(vehicleId),
             LN: String(randomInt(1, 3)),
-            SN: String(randomInt(70, 80)),
+            SN: String(randomInt(70, 71)),
             DATE_VEH_: startTime,
             DATE_VEH_END_: endTime,
             BOOL_CE_ANPR_: boolCeAnpr,
