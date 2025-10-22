@@ -67,6 +67,12 @@ const generateAxleData = (n, baseWeight) => {
 
 const generateSingleVehicleRecord = (index) => {
     const baseTime = DateTime.local().minus({ minutes: index });
+
+    // 1. สร้าง ID จาก Timestamp
+    // toMillis() ให้ค่า Epoch Time ในหน่วยมิลลิวินาที (Long Integer)
+    // การบวก index (0, 1, 2...) เข้าไปเล็กน้อยช่วยรับประกันว่า ID จะไม่ซ้ำกัน
+    const vehicleId = baseTime.toMillis() + index; 
+    
     const startTime = baseTime.toFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
     const endTime = baseTime.plus({ milliseconds: randomInt(500, 1500) }).toFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
     const firstAxleTime = baseTime.plus({ milliseconds: randomInt(50, 200) }).toFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
@@ -125,7 +131,7 @@ const generateSingleVehicleRecord = (index) => {
         name: 'Vehicle',
         attributes: {
             // ... (Vehicle Attributes ทั้งหมด)
-            ID_: String(303000 + index),
+            ID_: String(vehicleId),
             LN: String(randomInt(1, 3)),
             SN: String(randomInt(70, 80)),
             DATE_VEH_: startTime,
